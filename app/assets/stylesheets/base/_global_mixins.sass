@@ -1,0 +1,23 @@
+=layout_width($width)
+  width: $width
+  margin: 0 auto
+
+=retina-background($file_path, $retina_file_path, $size: cover)
+  background-image: image_url($file_path)
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: $size
+  @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5)
+    background-image: image_url($retina_file_path)
+    background-size: $size
+
+// from: https://github.com/sporkd/compass-h5bp/blob/master/stylesheets/h5bp/_helpers.scss
+=visually-hidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px

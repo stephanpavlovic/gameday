@@ -1,0 +1,34 @@
+.a-row
+  padding: $margin 0
+  color: $body-font-color
+  &.as-dark
+    background: $dark-blue
+    color: $white
+    .a-row--headline
+      color: $white
+  &.as-grey
+    background: $light-grey
+  &.as-small
+    padding: $padding 0
+  .a-row--subline
+    font-size: $small-font-size
+    font-weight: bold
+    text-align: center
+    text-transform: uppercase
+    color: $secondary-color
+    &.with-title
+      text-transform: none
+  .a-row--headline
+    margin-bottom: $margin
+    font-size: $h2-font-size
+    line-height: 130%
+    text-align: center
+    text-transform: none
+    font-weight: bold
+    span
+      font-weight: normal
+  .a-row--text
+    text-align: center
+  @media #{$small-only}
+    .a-row--headline
+      font-size: $h3-font-size

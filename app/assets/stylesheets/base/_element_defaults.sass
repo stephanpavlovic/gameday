@@ -1,0 +1,57 @@
+html, body
+  margin: 0
+  padding: 0
+body
+  text-rendering: optimizeLegibility
+img
+  border: none
+
+h1, h2, h3, h4, h5, h6
+  margin-top: 0px
+  font-weight: 600
+
+form
+  position: relative
+
+label
+  // +uppercase-text
+  // font-weight: bold
+  &.with-lowercase
+    text-transform: none
+input
+  background: $input-bg-color
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea
+  border-width: 1px
+  textarea
+    height: auto
+
+.svg-icon
+  position: relative
+  width: 48px
+  height: 48px
+
+// input:-moz-placeholder
+//   text-transform: uppercase
+// input::-moz-placeholder
+//   text-transform: uppercase
+// input::-webkit-input-placeholder
+//   text-transform: uppercase
+// input:-ms-input-placeholder
+//   text-transform: uppercase
+// textarea:-moz-placeholder
+//   text-transform: uppercase
+// textarea::-moz-placeholder
+//   text-transform: uppercase
+// textarea::-webkit-input-placeholder
+//   text-transform: uppercase
+// textarea:-ms-input-placeholder
+//   text-transform: uppercase
+
+a
+  &:focus, &:active
+    outline: none
+
+.with-margin-top
+  margin-top: $margin
+.with-margin-bottom
+  margin-bottom: $margin

@@ -2,7 +2,7 @@ class MatchdaysController < ApplicationController
 
   def new
     @matchday = Matchday.new(league: League.first)
-    @teams = @matchday.league.teams
+    @teams = @matchday.league.teams.order(:name)
 
   end
 

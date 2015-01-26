@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :matchdays
+  resources :matchdays do
+    member do
+      post :shuffle
+      get :matches
+    end
+  end
+
+  resources :matches
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

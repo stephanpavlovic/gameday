@@ -4,9 +4,30 @@
       %h1.a-row--headline
         Spieltag
         = l(@matchday.date, format: :short)
-.a-row
+.a-row.as-grey
   .row
     .small-12.medium-6.columns
-      %h2.a-row--headline Heimteam
+      %h2.a-row--headline= @matchday.home_team.name
+
     .small-12.medium-6.columns
-      %h2.a-row--headline Gastteam
+      %h2.a-row--headline= @matchday.guest_team.name
+
+- if @matchday.teams.count == 2
+  = form_tag shuffle_matchday_path do
+    .a-row
+      .row
+        .small-12.medium-4.medium-offset-2.columns
+          .players
+            - @matchday.home_team.players.each do |player|
+              .players-player
+                %label
+                  = check_box_tag 'home_player_ids[]', player.id
+                  = player.name
+        .small-12.medium-4.columns
+          .players
+            - @matchday.guest_team.players.each do |player|
+              .players-player
+                %label
+                  = check_box_tag 'guest_player_ids[]', player.id
+                  = player.name
+        %button Auslosen

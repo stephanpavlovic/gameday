@@ -1,0 +1,24 @@
+.a-row.as-dark
+  .row
+    .small-12.columns
+      %h1.a-row--headline
+        Spieltag
+        = l(@matchday.date, format: :short)
+.a-row.as-grey
+  .row
+    .small-12.medium-6.columns
+      %h2.a-row--headline= @matchday.home_team.name
+
+    .small-12.medium-6.columns
+      %h2.a-row--headline= @matchday.guest_team.name
+
+.a-row.as-grey
+  - @matchday.matches.each_with_index do |match, index|
+    .row
+      = form_for match do |f|
+        .small-12.medium-1.columns= "#{index+1}."
+        .small-12.medium-5.columns
+          = match.home_team_name
+        .small-12.medium-5.columns
+          = match.guest_team_name
+        .small-12.medium-1.columns

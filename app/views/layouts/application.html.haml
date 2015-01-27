@@ -2,8 +2,16 @@
 %html
   %head
     %title Gameday
+    %meta{:content => "NOODP", :name => "ROBOTS"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1"}
+    %meta{name: 'apple-mobile-web-app-title', content: 'Kicker App'}
+
+    / --------------------------------
+    %meta{:content => "website", :property => "og:type"}/
+    %meta{:content => url_for(:only_path => false), :property => "og:url"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
     = csrf_meta_tags
   %body{ class: ["#{controller_name}_controller", "#{controller_name}_#{action_name}"] }
     .a-row.as-grey.as-small

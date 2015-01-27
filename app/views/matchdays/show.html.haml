@@ -17,10 +17,12 @@
     .row
       = form_tag shuffle_matchday_path do
         .small-12.medium-6.columns
+          %h2.a-row--headline.show-for-small-only= @matchday.home_team.name
           .players{ data: { behavior: 'home-team' } }
             - @matchday.home_team.players.each do |player|
               = render 'matchdays/player', player: player, team: :home
         .small-12.medium-6.columns
+          %h2.a-row--headline.show-for-small-only= @matchday.guest_team.name
           .players{ data: { behavior: 'guest-team' } }
             - @matchday.guest_team.players.each do |player|
               = render 'matchdays/player', player: player, team: :guest

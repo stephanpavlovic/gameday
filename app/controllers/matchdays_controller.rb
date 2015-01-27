@@ -17,6 +17,7 @@ class MatchdaysController < ApplicationController
 
   def show
     @matchday = Matchday.find params[:id]
+    redirect_to matches_matchday_path(@matchday) if @matchday.matches.any?
   end
 
   def index

@@ -13,21 +13,26 @@
       %h2.a-row--headline= @matchday.guest_team.name
 
 - if @matchday.teams.count == 2
-  = form_tag shuffle_matchday_path do
-    .a-row
-      .row
-        .small-12.medium-4.medium-offset-2.columns
-          .players
+  .a-row
+    .row
+      = form_tag shuffle_matchday_path do
+        .small-12.medium-6.columns
+          .players{ data: { behavior: 'home-team' } }
             - @matchday.home_team.players.each do |player|
-              .players-player
-                %label
-                  = check_box_tag 'home_player_ids[]', player.id
-                  = player.name
-        .small-12.medium-4.columns
-          .players
+              = render 'matchdays/player', player: player, team: :home
+        .small-12.medium-6.columns
+          .players{ data: { behavior: 'guest-team' } }
             - @matchday.guest_team.players.each do |player|
-              .players-player
-                %label
-                  = check_box_tag 'guest_player_ids[]', player.id
-                  = player.name
-        %button Auslosen
+              = render 'matchdays/player', player: player, team: :guest
+        %button.shuffle-button Auslosen
+    .row
+      .small-12.medium-6.columns
+        = form_for Player.new, remote: true, data: { behavior: 'add-player', target: 'home-team' } do |fo|
+          = hidden_field_tag :team, 'home'
+          = fo.hidden_field :team_id, value: @matchday.home_team_id
+          = fo.text_field :name
+      .small-12.medium-6.columns
+        = form_for Player.new, remote: true, data: { behavior: 'add-player', target: 'guest-team' } do |fo|
+          = hidden_field_tag :team, 'guest'
+          = fo.hidden_field :team_id, value: @matchday.guest_team_id
+          = fo.text_field :name
